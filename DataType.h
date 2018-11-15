@@ -1,8 +1,10 @@
 #pragma once
 
 #include <iostream>
+#include <cstring>
 
 namespace QCTech {
+
 	struct StructInsertOrderReq
 	{
 		double price;
