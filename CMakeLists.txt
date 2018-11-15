@@ -13,8 +13,8 @@ set(EsunnyTradeLibDir  ${PROJECT_SOURCE_DIR}/3rdparty/Esunny9.0)
 
 
 include_directories(
-    .
-    ./gateway/
+    ${PROJECT_SOURCE_DIR}
+    ${PROJECT_SOURCE_DIR}/gateway
     ${EsunnyTradeLibDir}
 )
 

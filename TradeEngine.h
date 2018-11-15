@@ -23,6 +23,10 @@ namespace QCTech
 		void Connect();
 		// 按名称连接交易网关
 		void Connect(std::string gatewayName);
+		
+		// 断开连接
+		void Disconnect();
+		void Disconnect(std::string gatewayName);
 
 		void InsertOrder(StructInsertOrderReq& stOrder, std::string gatewayName);
 	private:

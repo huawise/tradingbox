@@ -1,9 +1,8 @@
 ﻿#include <cstring>
-#include "TradeGateway.h"
-#include "EsunnyTradeGateway.h"
 #include <iTapTradeAPI.h>
 #include <iTapAPIError.h>
-
+#include "TradeGateway.h"
+#include "EsunnyTradeGateway.h"
 
 namespace QCTech
 {
@@ -73,9 +72,16 @@ namespace QCTech
 		return;
 	}
 
+	void EsunnyTradeGateway::Disconnect()
+	{
+		m_pTradeApi->Disconnect();
+	}
+
 	void EsunnyTradeGateway::InsertOrder(StructInsertOrderReq & stOrderReq)
 	{
 		std::cout << __FUNCTION__ << std::endl;
+		TapAPINewOrder order;
+		
 		//m_pTradeApi->InsertOrder();
 	}
 
@@ -103,6 +109,11 @@ namespace QCTech
 	void TAP_CDECL EsunnyTradeGateway::OnRspLogin(ITapTrade::TAPIINT32 errorCode, const ITapTrade::TapAPITradeLoginRspInfo *loginRspInfo)
 	{
 		std::cout << __FUNCTION__ << std::endl;
+		if (errorCode != TAPIERROR_SUCCEED)
+		{
+			return;
+		}
+		m_isLogin = true;
 	}
 
 	/**
@@ -161,6 +172,7 @@ namespace QCTech
 	void TAP_CDECL EsunnyTradeGateway::OnAPIReady()
 	{
 		std::cout << __FUNCTION__ << std::endl;
+		m_isTunnelReady = true;
 	}
 
 	/**
@@ -172,6 +184,7 @@ namespace QCTech
 	void TAP_CDECL EsunnyTradeGateway::OnDisconnect(ITapTrade::TAPIINT32 reasonCode)
 	{
 		std::cout << __FUNCTION__ << std::endl;
+		m_isTunnelReady = false;
 	}
 
 	/**

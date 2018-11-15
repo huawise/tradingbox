@@ -34,6 +34,16 @@ namespace QCTech
 			gw->Connect();
 		}
 	}
+	void TradeEngine::Disconnect()
+	{
+		for (auto& it : m_mapTradeGateway)
+		{
+			it.second.Disconnect();
+		}
+	}
+	void TradeEngine::Disconnect(std::string gatewayName)
+	{
+	}
 	void TradeEngine::InsertOrder(StructInsertOrderReq& stOrderReq, std::string gatewayName)
 	{
 		auto gw = GetGateway(gatewayName);

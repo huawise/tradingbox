@@ -16,8 +16,10 @@ namespace QCTech {
 		}
 	public:
 		virtual void Connect() = 0;
+		virtual void Disconnect() = 0;
 		virtual void InsertOrder(StructInsertOrderReq& stOrderReq) = 0;
 		
+		virtual void OnLogin(StructAccountInfo& stAccInfo);
 
 	public:
 

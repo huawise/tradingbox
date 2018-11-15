@@ -16,5 +16,13 @@ namespace QCTech {
 		}
 	};
 
+	struct StructAccountInfo
+	{
+		std::string AccountID;
+		std::string UserName; 
+		std::string TradingDay;
+		
+	};
+
 
 }

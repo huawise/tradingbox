@@ -17,6 +17,7 @@ namespace QCTech
 	public:
 		virtual void LoadConfigure();
 		virtual void Connect();
+		virtual void Disconnect();
 		virtual void InsertOrder(StructInsertOrderReq& stOrderReq);
 
 	public:
@@ -517,5 +518,9 @@ namespace QCTech
 		// 鉴权信息
 		TapAPITradeLoginAuth m_stLoginAuth;
 
+		// 登录状态
+		bool m_isLogin;
+
+		bool m_isTunnelReady;
 	};
 }

@@ -15,4 +15,9 @@ namespace QCTech
 	
 	}
 
+	void TradeGateway::OnLogin(StructAccountInfo & stAccInfo)
+	{
+		
+	}
+
 }
