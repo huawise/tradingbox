@@ -1,4 +1,4 @@
-#include "TradeGateway.h"
+﻿#include "TradeGateway.h"
 
 namespace QCTech
 {

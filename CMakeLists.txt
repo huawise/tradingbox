@@ -5,11 +5,16 @@ cmake_minimum_required (VERSION 2.8.8)
 project("TradeDemo")
 
 set(CMAKE_CONFIGURATION_TYPES Debug)
-#set(CMAKE_CXX_FLAGS "-std=c++11 -m64")
+set(CMAKE_CXX_FLAGS "-std=c++11 -m64")
 
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build/bin)
 
+IF (WIN32)
+    set(EsunnyTradeLibDir  ${PROJECT_SOURCE_DIR}/3rdparty/iTapTradeApi8.1_Win64_6048/)
+ELSEIF(UNIX)
+    set(EsunnyTradeLibDir  ${PROJECT_SOURCE_DIR}/3rdparty/iTapTradeApi8.1_Linux_6048/)
+ENDIF(WIN32)
 
-set(EsunnyTradeLibDir  ${PROJECT_SOURCE_DIR}/3rdparty/iTapTradeApi8.1_Win64_6048/)
 include_directories(
     .
     ./gateway/
@@ -21,7 +26,13 @@ link_directories(
 )
 
 
-link_libraries(iTapTradeAPI_64)
+
+IF (WIN32)
+    link_libraries(iTapTradeAPI_64)
+ELSEIF(UNIX)
+    link_libraries(libiTapTradeAPI.so)
+ENDIF(WIN32)
+
 
 file(GLOB SRC *.cpp ./gateway/*.cpp )
 add_executable(${PROJECT_NAME} ${SRC})
@@ -32,5 +43,5 @@ set(CMAKE_INSTALL_PREFIX ./dist/)
 file(GLOB LIBS
     ${EsunnyTradeLibDir}/lib/*
 )
-file(COPY  ${LIBS} DESTINATION ${PROJECT_BINARY_DIR}/Debug/)
+file(COPY  ${LIBS} DESTINATION ${EXECUTABLE_OUTPUT_PATH})
 

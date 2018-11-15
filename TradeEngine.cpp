@@ -1,4 +1,4 @@
-#include "TradeEngine.h"
+﻿#include "TradeEngine.h"
 #include "DataType.h"
 
 namespace QCTech
