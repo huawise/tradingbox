@@ -8,7 +8,7 @@
             "name": "TradeDemo",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "build/Debug/TradeDemo.exe",
+            "program": "${workspaceFolder}/build/Debug/TradeDemo.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
