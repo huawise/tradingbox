@@ -9,20 +9,17 @@ set(CMAKE_CXX_FLAGS "-std=c++1y")
 set(CMAKE_BUILD_TYPE  Debug)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/output)
 
-IF (WIN32)
-    set(EsunnyTradeLibDir  ${PROJECT_SOURCE_DIR}/3rdparty/iTapTradeApi8.1_Win64_6048/)
-ELSEIF(UNIX)
-    set(EsunnyTradeLibDir  ${PROJECT_SOURCE_DIR}/3rdparty/iTapTradeApi8.1_Linux_6048/)
-ENDIF(WIN32)
+set(EsunnyTradeLibDir  ${PROJECT_SOURCE_DIR}/3rdparty/Esunny9.0)
+
 
 include_directories(
     .
     ./gateway/
-    ${EsunnyTradeLibDir}/include/
+    ${EsunnyTradeLibDir}
 )
 
 link_directories(
-    ${EsunnyTradeLibDir}/lib/
+    ${EsunnyTradeLibDir}
 )
 
 IF (WIN32)
@@ -39,7 +36,8 @@ add_executable(${PROJECT_NAME} ${SRC})
 set(CMAKE_INSTALL_PREFIX ./dist/)
 
 file(GLOB LIBS
-    ${EsunnyTradeLibDir}/lib/*
+    ${EsunnyTradeLibDir}/*.dll
+    ${EsunnyTradeLibDir}/*.so
 )
 file(COPY  ${LIBS} DESTINATION  "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_BUILD_TYPE}")
 
