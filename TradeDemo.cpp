@@ -3,6 +3,7 @@
 #include <functional>
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include "TradeEngine.h"
 #include "EsunnyTradeGateway.h"
