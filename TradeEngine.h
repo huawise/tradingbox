@@ -12,16 +12,16 @@ namespace QCTech
 		TradeEngine();
 		virtual ~TradeEngine();
 		
-		// Ìí¼Ó½»Ò×Íø¹Ø
+		// æ·»åŠ äº¤æ˜“ç½‘å…³
 		void AddGateway(TradeGateway& gw);
 		
-		// »ñÈ¡½»Ò×Íø¹Ø
+		// è·å–äº¤æ˜“ç½‘å…³
 		TradeGateway* GetGateway(std::string gatewayName);
 
 	public:
-		// Á¬½ÓÈ«²¿½»Ò×Íø¹Ø
+		// è¿æ¥å…¨éƒ¨äº¤æ˜“ç½‘å…³
 		void Connect();
-		// °´Ãû³ÆÁ¬½Ó½»Ò×Íø¹Ø
+		// æŒ‰åç§°è¿æ¥äº¤æ˜“ç½‘å…³
 		void Connect(std::string gatewayName);
 
 		void InsertOrder(StructInsertOrderReq& stOrder, std::string gatewayName);

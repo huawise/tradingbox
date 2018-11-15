@@ -22,478 +22,478 @@ namespace QCTech
 	public:
 #pragma region Spi interfaces in ITapTradeAPINotify
 		/**
-		* @brief Á¬½Ó³É¹¦»Øµ÷Í¨Öª
+		* @brief è¿æ¥æˆåŠŸå›è°ƒé€šçŸ¥
 		* @ingroup G_T_Login
 		*/
 		virtual void TAP_CDECL OnConnect();
 		/**
-		* @brief	ÏµÍ³µÇÂ¼¹ı³Ì»Øµ÷¡£
-		* @details	´Ëº¯ÊıÎªLogin()µÇÂ¼º¯ÊıµÄ»Øµ÷£¬µ÷ÓÃLogin()³É¹¦ºó½¨Á¢ÁËÁ´Â·Á¬½Ó£¬È»ºóAPI½«Ïò·şÎñÆ÷·¢ËÍµÇÂ¼ÈÏÖ¤ĞÅÏ¢£¬
-		*			µÇÂ¼ÆÚ¼äµÄÊı¾İ·¢ËÍÇé¿öºÍµÇÂ¼µÄ»ØÀ¡ĞÅÏ¢´«µİµ½´Ë»Øµ÷º¯ÊıÖĞ¡£
-		* @param[in] errorCode ·µ»Ø´íÎóÂë,0±íÊ¾³É¹¦¡£
-		* @param[in] loginRspInfo µÇÂ½Ó¦´ğĞÅÏ¢£¬Èç¹ûerrorCode!=0£¬ÔòloginRspInfo=NULL¡£
-		* @attention	¸Ã»Øµ÷·µ»Ø³É¹¦£¬ËµÃ÷ÓÃ»§µÇÂ¼³É¹¦¡£µ«ÊÇ²»´ú±íAPI×¼±¸Íê±Ï¡£
+		* @brief	ç³»ç»Ÿç™»å½•è¿‡ç¨‹å›è°ƒã€‚
+		* @details	æ­¤å‡½æ•°ä¸ºLogin()ç™»å½•å‡½æ•°çš„å›è°ƒï¼Œè°ƒç”¨Login()æˆåŠŸåå»ºç«‹äº†é“¾è·¯è¿æ¥ï¼Œç„¶åAPIå°†å‘æœåŠ¡å™¨å‘é€ç™»å½•è®¤è¯ä¿¡æ¯ï¼Œ
+		*			ç™»å½•æœŸé—´çš„æ•°æ®å‘é€æƒ…å†µå’Œç™»å½•çš„å›é¦ˆä¿¡æ¯ä¼ é€’åˆ°æ­¤å›è°ƒå‡½æ•°ä¸­ã€‚
+		* @param[in] errorCode è¿”å›é”™è¯¯ç ,0è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] loginRspInfo ç™»é™†åº”ç­”ä¿¡æ¯ï¼Œå¦‚æœerrorCode!=0ï¼Œåˆ™loginRspInfo=NULLã€‚
+		* @attention	è¯¥å›è°ƒè¿”å›æˆåŠŸï¼Œè¯´æ˜ç”¨æˆ·ç™»å½•æˆåŠŸã€‚ä½†æ˜¯ä¸ä»£è¡¨APIå‡†å¤‡å®Œæ¯•ã€‚
 		* @ingroup G_T_Login
 		*/
 		virtual void TAP_CDECL OnRspLogin(ITapTrade::TAPIINT32 errorCode, const ITapTrade::TapAPITradeLoginRspInfo *loginRspInfo);
 		/**
-		* @brief	¶ş´ÎÈÏÖ¤ÁªÏµ·½Ê½Í¨Öª¡£
-		* @details	µÇÂ¼Íê³Éºó£¬Èç¹ûĞèÒª¶ş´ÎÈÏÖ¤£¨9.2.7ºóÌ¨£©£¬»áÊÕµ½ÁªÏµ·½Ê½µÄÍ¨Öª£¬¿ÉÒÔÑ¡ÔñÍ¨ÖªÏûÏ¢µÄÒ»¸öÁªÏµ·½Ê½£¨ÓÊÏä»òÕßµç»°£©
-		*			ÇëÇó·¢ËÍ¶ş´ÎÈÏÖ¤ÊÚÈ¨Âë£¨RequestVertificateCode£©¡£
-		* @param[in] errorCode ·µ»Ø´íÎóÂë,0±íÊ¾³É¹¦¡£Èç¹ûÕË»§Ã»ÓĞ°ó¶¨¶ş´ÎÈÏÖ¤ÁªÏµ·½Ê½£¬Ôò·µ»Ø10016´íÎó¡£
-		* @param[in] isLast,±êÊ¶ÊÇ·ñÊÇ×îºóÒ»ÌõÁªÏµĞÅÏ¢¡£
-		* @param[in]  ÈÏÖ¤·½Ê½ĞÅÏ¢£¬Èç¹ûerrorCode!=0£¬ÔòContactInfoÎª¿Õ¡£
-		* @attention	¸Ã»Øµ÷·µ»Ø³É¹¦£¬ËµÃ÷ĞèÒª¶ş´ÎÈÏÖ¤£¬²¢ÇÒĞèÒªÑ¡ÔñÒ»¸öÁªÏµ·½Ê½È»ºóµ÷ÓÃRequestVertificateCode¡£
+		* @brief	äºŒæ¬¡è®¤è¯è”ç³»æ–¹å¼é€šçŸ¥ã€‚
+		* @details	ç™»å½•å®Œæˆåï¼Œå¦‚æœéœ€è¦äºŒæ¬¡è®¤è¯ï¼ˆ9.2.7åå°ï¼‰ï¼Œä¼šæ”¶åˆ°è”ç³»æ–¹å¼çš„é€šçŸ¥ï¼Œå¯ä»¥é€‰æ‹©é€šçŸ¥æ¶ˆæ¯çš„ä¸€ä¸ªè”ç³»æ–¹å¼ï¼ˆé‚®ç®±æˆ–è€…ç”µè¯ï¼‰
+		*			è¯·æ±‚å‘é€äºŒæ¬¡è®¤è¯æˆæƒç ï¼ˆRequestVertificateCodeï¼‰ã€‚
+		* @param[in] errorCode è¿”å›é”™è¯¯ç ,0è¡¨ç¤ºæˆåŠŸã€‚å¦‚æœè´¦æˆ·æ²¡æœ‰ç»‘å®šäºŒæ¬¡è®¤è¯è”ç³»æ–¹å¼ï¼Œåˆ™è¿”å›10016é”™è¯¯ã€‚
+		* @param[in] isLast,æ ‡è¯†æ˜¯å¦æ˜¯æœ€åä¸€æ¡è”ç³»ä¿¡æ¯ã€‚
+		* @param[in]  è®¤è¯æ–¹å¼ä¿¡æ¯ï¼Œå¦‚æœerrorCode!=0ï¼Œåˆ™ContactInfoä¸ºç©ºã€‚
+		* @attention	è¯¥å›è°ƒè¿”å›æˆåŠŸï¼Œè¯´æ˜éœ€è¦äºŒæ¬¡è®¤è¯ï¼Œå¹¶ä¸”éœ€è¦é€‰æ‹©ä¸€ä¸ªè”ç³»æ–¹å¼ç„¶åè°ƒç”¨RequestVertificateCodeã€‚
 		* @ingroup G_T_Login
 		*/
 		virtual void TAP_CDECL OnRtnContactInfo(ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TAPISTR_40 ContactInfo);
 
 		/**
-		* @brief	ÇëÇó·¢ËÍ¶ş´ÎÈÏÖ¤ÂëÓ¦´ğ¡£
-		* @details	ÇëÇó»ñÈ¡¶ş´ÎÈÏÖ¤ÊÚÈ¨Âë£¬ºóÌ¨·¢ËÍÓÊ¼ş»òÕß¶ÌĞÅ£¬²¢¸ø³öÓ¦´ğ£¬°üº¬·¢ËÍĞòºÅÒÔ¼°ÈÏÖ¤ÂëÓĞĞ§ÆÚ¡£
+		* @brief	è¯·æ±‚å‘é€äºŒæ¬¡è®¤è¯ç åº”ç­”ã€‚
+		* @details	è¯·æ±‚è·å–äºŒæ¬¡è®¤è¯æˆæƒç ï¼Œåå°å‘é€é‚®ä»¶æˆ–è€…çŸ­ä¿¡ï¼Œå¹¶ç»™å‡ºåº”ç­”ï¼ŒåŒ…å«å‘é€åºå·ä»¥åŠè®¤è¯ç æœ‰æ•ˆæœŸã€‚
 		*
-		* @param[in] sessionID ÇëÇó¶ş´ÎÈÏÖ¤Âë»á»°ID¡£
-		* @param[in]  errorCode Èç¹ûÃ»ÓĞ°ó¶¨ÁªÏµ£¬·µ»Ø10016´íÎó.
-		* @param[in]  rsp¶ş´ÎÈÏÖ¤ÂëÓĞĞ§ÆÚ£¬ÒÔÃë·µ»Ø£¬ÔÚ¶ş´ÎÈÏÖ¤ÓĞĞ§ÆÚÄÚ£¬¿ÉÒÔÖØ¸´ÉèÖÃ¶ş´ÎÈÏÖ¤Âë£¬µ«ÊÇ²»ÄÜÔÙÖØĞÂÉêÇë¶ş´ÎÈÏÖ¤Âë¡£
-		* @attention	¸Ã»Øµ÷·µ»Ø³É¹¦£¬ËµÃ÷ĞèÒª¶ş´ÎÈÏÖ¤£¬²¢ÇÒĞèÒªÑ¡ÔñÒ»¸öÁªÏµ·½Ê½È»ºóµ÷ÓÃRequestVertificateCode¡£
+		* @param[in] sessionID è¯·æ±‚äºŒæ¬¡è®¤è¯ç ä¼šè¯IDã€‚
+		* @param[in]  errorCode å¦‚æœæ²¡æœ‰ç»‘å®šè”ç³»ï¼Œè¿”å›10016é”™è¯¯.
+		* @param[in]  rspäºŒæ¬¡è®¤è¯ç æœ‰æ•ˆæœŸï¼Œä»¥ç§’è¿”å›ï¼Œåœ¨äºŒæ¬¡è®¤è¯æœ‰æ•ˆæœŸå†…ï¼Œå¯ä»¥é‡å¤è®¾ç½®äºŒæ¬¡è®¤è¯ç ï¼Œä½†æ˜¯ä¸èƒ½å†é‡æ–°ç”³è¯·äºŒæ¬¡è®¤è¯ç ã€‚
+		* @attention	è¯¥å›è°ƒè¿”å›æˆåŠŸï¼Œè¯´æ˜éœ€è¦äºŒæ¬¡è®¤è¯ï¼Œå¹¶ä¸”éœ€è¦é€‰æ‹©ä¸€ä¸ªè”ç³»æ–¹å¼ç„¶åè°ƒç”¨RequestVertificateCodeã€‚
 		* @ingroup G_T_Login
 		*/
 		virtual void TAP_CDECL OnRspRequestVertificateCode(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, const TapAPIRequestVertificateCodeRsp *rsp);
 
 		/**
-		* @brief	APIµ½ÆÚÌáĞÑ»Øµ÷
-		* @details	´Ëº¯ÊıÎªLogin()µÇÂ¼³É¹¦ºó£¬Èç¹ûµ½ÆÚÈÕÓëµ±Ç°ÈÕÆÚĞ¡ÓÚ30Ìì£¬Ôò½øĞĞ»Øµ÷ÌáĞÑ¡£
-		* @param[in] date ·µ»ØAPIÊÚÈ¨µ½ÆÚÈÕ¡£
-		* @param[in] days ·µ»Ø»¹ÓĞ¼¸ÌìÊÚÈ¨µ½ÆÚ¡£
-		* @attention	¸Ãº¯Êı»Øµ÷£¬ÔòËµÃ÷ÊÚÈ¨ÔÚÒ»¸öÔÂÖ®ÄÚµ½ÆÚ¡£·ñÔò²»²úÉú¸Ã»Øµ÷¡£
+		* @brief	APIåˆ°æœŸæé†’å›è°ƒ
+		* @details	æ­¤å‡½æ•°ä¸ºLogin()ç™»å½•æˆåŠŸåï¼Œå¦‚æœåˆ°æœŸæ—¥ä¸å½“å‰æ—¥æœŸå°äº30å¤©ï¼Œåˆ™è¿›è¡Œå›è°ƒæé†’ã€‚
+		* @param[in] date è¿”å›APIæˆæƒåˆ°æœŸæ—¥ã€‚
+		* @param[in] days è¿”å›è¿˜æœ‰å‡ å¤©æˆæƒåˆ°æœŸã€‚
+		* @attention	è¯¥å‡½æ•°å›è°ƒï¼Œåˆ™è¯´æ˜æˆæƒåœ¨ä¸€ä¸ªæœˆä¹‹å†…åˆ°æœŸã€‚å¦åˆ™ä¸äº§ç”Ÿè¯¥å›è°ƒã€‚
 		* @ingroup G_T_Login
 		*/
 		virtual void TAP_CDECL OnExpriationDate(ITapTrade::TAPIDATE date, int days);
 
 		/**
-		* @brief	Í¨ÖªÓÃ»§API×¼±¸¾ÍĞ÷¡£
-		* @details	Ö»ÓĞÓÃ»§»Øµ÷ÊÕµ½´Ë¾ÍĞ÷Í¨ÖªÊ±²ÅÄÜ½øĞĞºóĞøµÄ¸÷ÖÖĞĞÇéÊı¾İ²éÑ¯²Ù×÷¡£\n
-		*			´Ë»Øµ÷º¯ÊıÊÇAPIÄÜ·ñÕı³£¹¤×÷µÄ±êÖ¾¡£
-		* @attention ¾ÍĞ÷ºó²Å¿ÉÒÔ½øĞĞºóĞøÕı³£²Ù×÷
+		* @brief	é€šçŸ¥ç”¨æˆ·APIå‡†å¤‡å°±ç»ªã€‚
+		* @details	åªæœ‰ç”¨æˆ·å›è°ƒæ”¶åˆ°æ­¤å°±ç»ªé€šçŸ¥æ—¶æ‰èƒ½è¿›è¡Œåç»­çš„å„ç§è¡Œæƒ…æ•°æ®æŸ¥è¯¢æ“ä½œã€‚\n
+		*			æ­¤å›è°ƒå‡½æ•°æ˜¯APIèƒ½å¦æ­£å¸¸å·¥ä½œçš„æ ‡å¿—ã€‚
+		* @attention å°±ç»ªåæ‰å¯ä»¥è¿›è¡Œåç»­æ­£å¸¸æ“ä½œ
 		* @ingroup G_T_Login
 		*/
 		virtual void TAP_CDECL OnAPIReady();
 		/**
-		* @brief	APIºÍ·şÎñÊ§È¥Á¬½ÓµÄ»Øµ÷
-		* @details	ÔÚAPIÊ¹ÓÃ¹ı³ÌÖĞÖ÷¶¯»òÕß±»¶¯Óë·şÎñÆ÷·şÎñÊ§È¥Á¬½Óºó¶¼»á´¥·¢´Ë»Øµ÷Í¨ÖªÓÃ»§Óë·şÎñÆ÷µÄÁ¬½ÓÒÑ¾­¶Ï¿ª¡£
-		* @param[in] reasonCode ¶Ï¿ªÔ­Òò´úÂë¡£
+		* @brief	APIå’ŒæœåŠ¡å¤±å»è¿æ¥çš„å›è°ƒ
+		* @details	åœ¨APIä½¿ç”¨è¿‡ç¨‹ä¸­ä¸»åŠ¨æˆ–è€…è¢«åŠ¨ä¸æœåŠ¡å™¨æœåŠ¡å¤±å»è¿æ¥åéƒ½ä¼šè§¦å‘æ­¤å›è°ƒé€šçŸ¥ç”¨æˆ·ä¸æœåŠ¡å™¨çš„è¿æ¥å·²ç»æ–­å¼€ã€‚
+		* @param[in] reasonCode æ–­å¼€åŸå› ä»£ç ã€‚
 		* @ingroup G_T_Disconnect
 		*/
 		virtual void TAP_CDECL OnDisconnect(ITapTrade::TAPIINT32 reasonCode);
 		/**
-		* @brief Í¨ÖªÓÃ»§ÃÜÂëĞŞ¸Ä½á¹û
-		* @param[in] sessionID ĞŞ¸ÄÃÜÂëµÄ»á»°ID,ºÍChangePassword·µ»ØµÄ»á»°ID¶ÔÓ¦¡£
-		* @param[in] errorCode ·µ»Ø´íÎóÂë£¬0±íÊ¾³É¹¦¡£
+		* @brief é€šçŸ¥ç”¨æˆ·å¯†ç ä¿®æ”¹ç»“æœ
+		* @param[in] sessionID ä¿®æ”¹å¯†ç çš„ä¼šè¯ID,å’ŒChangePasswordè¿”å›çš„ä¼šè¯IDå¯¹åº”ã€‚
+		* @param[in] errorCode è¿”å›é”™è¯¯ç ï¼Œ0è¡¨ç¤ºæˆåŠŸã€‚
 		* @ingroup G_T_UserInfo
 		*/
 		virtual void TAP_CDECL OnRspChangePassword(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode);
 
 		/**
-		* @brief ÈÏÖ¤ÕË»§ÃÜÂë·´À¡
-		* @param[in] sessionID ĞŞ¸ÄÃÜÂëµÄ»á»°ID,ºÍAuthPassword·µ»ØµÄ»á»°ID¶ÔÓ¦¡£
-		* @param[in] errorCode ·µ»Ø´íÎóÂë£¬0±íÊ¾³É¹¦¡£
+		* @brief è®¤è¯è´¦æˆ·å¯†ç åé¦ˆ
+		* @param[in] sessionID ä¿®æ”¹å¯†ç çš„ä¼šè¯ID,å’ŒAuthPasswordè¿”å›çš„ä¼šè¯IDå¯¹åº”ã€‚
+		* @param[in] errorCode è¿”å›é”™è¯¯ç ï¼Œ0è¡¨ç¤ºæˆåŠŸã€‚
 		* @ingroup G_T_UserInfo
 		*/
 		virtual void TAP_CDECL OnRspAuthPassword(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode);
 		/**
-		* @brief ÉèÖÃÓÃ»§Ô¤ÁôĞÅÏ¢·´À¡
-		* @param[in] sessionID ÉèÖÃÓÃ»§Ô¤ÁôĞÅÏ¢µÄ»á»°ID
-		* @param[in] errorCode ·µ»Ø´íÎóÂë£¬0±íÊ¾³É¹¦¡£
-		* @param[in] info Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
-		* @note ¸Ã½Ó¿ÚÔİÎ´ÊµÏÖ
+		* @brief è®¾ç½®ç”¨æˆ·é¢„ç•™ä¿¡æ¯åé¦ˆ
+		* @param[in] sessionID è®¾ç½®ç”¨æˆ·é¢„ç•™ä¿¡æ¯çš„ä¼šè¯ID
+		* @param[in] errorCode è¿”å›é”™è¯¯ç ï¼Œ0è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] info æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
+		* @note è¯¥æ¥å£æš‚æœªå®ç°
 		* @ingroup G_T_UserInfo
 		*/
 		virtual void TAP_CDECL OnRspSetReservedInfo(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, const ITapTrade::TAPISTR_50 info);
 		/**
-		* @brief	·µ»ØÓÃ»§ĞÅÏ¢
-		* @details	´Ë»Øµ÷½Ó¿ÚÏòÓÃ»§·µ»Ø²éÑ¯µÄ×Ê½ğÕËºÅµÄÏêÏ¸ĞÅÏ¢¡£ÓÃ»§ÓĞ±ØÒª½«µÃµ½µÄÕËºÅ±àºÅ±£´æÆğÀ´£¬È»ºóÔÚºóĞøµÄº¯Êıµ÷ÓÃÖĞÊ¹ÓÃ¡£
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] isLast ±êÊ¾ÊÇ·ñÊÇ×îºóÒ»ÅúÊı¾İ£»
-		* @param[in] info Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief	è¿”å›ç”¨æˆ·ä¿¡æ¯
+		* @details	æ­¤å›è°ƒæ¥å£å‘ç”¨æˆ·è¿”å›æŸ¥è¯¢çš„èµ„é‡‘è´¦å·çš„è¯¦ç»†ä¿¡æ¯ã€‚ç”¨æˆ·æœ‰å¿…è¦å°†å¾—åˆ°çš„è´¦å·ç¼–å·ä¿å­˜èµ·æ¥ï¼Œç„¶ååœ¨åç»­çš„å‡½æ•°è°ƒç”¨ä¸­ä½¿ç”¨ã€‚
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] isLast æ ‡ç¤ºæ˜¯å¦æ˜¯æœ€åä¸€æ‰¹æ•°æ®ï¼›
+		* @param[in] info æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_AccountInfo
 		*/
 		virtual void TAP_CDECL OnRspQryAccount(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIUINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIAccountInfo *info);
 		/**
-		* @brief ·µ»Ø×Ê½ğÕË»§µÄ×Ê½ğĞÅÏ¢
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] isLast 	±êÊ¾ÊÇ·ñÊÇ×îºóÒ»ÅúÊı¾İ£»
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief è¿”å›èµ„é‡‘è´¦æˆ·çš„èµ„é‡‘ä¿¡æ¯
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] isLast 	æ ‡ç¤ºæ˜¯å¦æ˜¯æœ€åä¸€æ‰¹æ•°æ®ï¼›
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_AccountDetails
 		*/
 		virtual void TAP_CDECL OnRspQryFund(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIFundData *info);
 		/**
-		* @brief	ÓÃ»§×Ê½ğ±ä»¯Í¨Öª
-		* @details	ÓÃ»§µÄÎ¯ÍĞ³É½»ºó»áÒıÆğ×Ê½ğÊı¾İµÄ±ä»¯£¬Òò´ËĞèÒªÏòÓÃ»§ÊµÊ±·´À¡¡£
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @note Èç¹û²»¹Ø×¢´ËÏîÄÚÈİ£¬¿ÉÒÔÉè¶¨LoginÊ±µÄNoticeIgnoreFlagÒÔÆÁ±Î¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief	ç”¨æˆ·èµ„é‡‘å˜åŒ–é€šçŸ¥
+		* @details	ç”¨æˆ·çš„å§”æ‰˜æˆäº¤åä¼šå¼•èµ·èµ„é‡‘æ•°æ®çš„å˜åŒ–ï¼Œå› æ­¤éœ€è¦å‘ç”¨æˆ·å®æ—¶åé¦ˆã€‚
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @note å¦‚æœä¸å…³æ³¨æ­¤é¡¹å†…å®¹ï¼Œå¯ä»¥è®¾å®šLoginæ—¶çš„NoticeIgnoreFlagä»¥å±è”½ã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_AccountDetails
 		*/
 		virtual void TAP_CDECL OnRtnFund(const ITapTrade::TapAPIFundData *info);
 		/**
-		* @brief ·µ»ØÏµÍ³ÖĞµÄ½»Ò×ËùĞÅÏ¢
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] isLast 	±êÊ¾ÊÇ·ñÊÇ×îºóÒ»ÅúÊı¾İ£»
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief è¿”å›ç³»ç»Ÿä¸­çš„äº¤æ˜“æ‰€ä¿¡æ¯
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] isLast 	æ ‡ç¤ºæ˜¯å¦æ˜¯æœ€åä¸€æ‰¹æ•°æ®ï¼›
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_TradeSystem
 		*/
 		virtual void TAP_CDECL OnRspQryExchange(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIExchangeInfo *info);
 		/**
-		* @brief	·µ»ØÏµÍ³ÖĞÆ·ÖÖĞÅÏ¢
-		* @details	´Ë»Øµ÷½Ó¿ÚÓÃÓÚÏòÓÃ»§·µ»ØµÃµ½µÄËùÓĞÆ·ÖÖĞÅÏ¢¡£
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£¬ºÍGetAllCommodities()º¯Êı·µ»Ø¶ÔÓ¦£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] isLast 	±êÊ¾ÊÇ·ñÊÇ×îºóÒ»ÅúÊı¾İ£»
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief	è¿”å›ç³»ç»Ÿä¸­å“ç§ä¿¡æ¯
+		* @details	æ­¤å›è°ƒæ¥å£ç”¨äºå‘ç”¨æˆ·è¿”å›å¾—åˆ°çš„æ‰€æœ‰å“ç§ä¿¡æ¯ã€‚
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼Œå’ŒGetAllCommodities()å‡½æ•°è¿”å›å¯¹åº”ï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] isLast 	æ ‡ç¤ºæ˜¯å¦æ˜¯æœ€åä¸€æ‰¹æ•°æ®ï¼›
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_Commodity
 		*/
 		virtual void TAP_CDECL OnRspQryCommodity(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPICommodityInfo *info);
 		/**
-		* @brief ·µ»ØÏµÍ³ÖĞºÏÔ¼ĞÅÏ¢
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] isLast 	±êÊ¾ÊÇ·ñÊÇ×îºóÒ»ÅúÊı¾İ£»
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief è¿”å›ç³»ç»Ÿä¸­åˆçº¦ä¿¡æ¯
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] isLast 	æ ‡ç¤ºæ˜¯å¦æ˜¯æœ€åä¸€æ‰¹æ•°æ®ï¼›
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_Contract
 		*/
 		virtual void TAP_CDECL OnRspQryContract(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPITradeContractInfo *info);
 		/**
-		* @brief	·µ»ØĞÂÔöºÏÔ¼ĞÅÏ¢
-		* @details	ÏòÓÃ»§ÍÆËÍĞÂµÄºÏÔ¼¡£Ö÷ÒªÓÃÀ´´¦ÀíÔÚ½»Ò×Ê±¼ä¶ÎÖĞ·şÎñÆ÷Ìí¼ÓÁËĞÂºÏÔ¼Ê±£¬ÏòÓÃ»§·¢ËÍÕâ¸öºÏÔ¼µÄĞÅÏ¢¡£
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief	è¿”å›æ–°å¢åˆçº¦ä¿¡æ¯
+		* @details	å‘ç”¨æˆ·æ¨é€æ–°çš„åˆçº¦ã€‚ä¸»è¦ç”¨æ¥å¤„ç†åœ¨äº¤æ˜“æ—¶é—´æ®µä¸­æœåŠ¡å™¨æ·»åŠ äº†æ–°åˆçº¦æ—¶ï¼Œå‘ç”¨æˆ·å‘é€è¿™ä¸ªåˆçº¦çš„ä¿¡æ¯ã€‚
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_Contract
 		*/
 		virtual void TAP_CDECL OnRtnContract(const ITapTrade::TapAPITradeContractInfo *info);
 		/**
-		* @brief	¶©µ¥²Ù×÷Ó¦´ğ
-		* @details	ÏÂµ¥¡¢³·µ¥¡¢¸Äµ¥Ó¦´ğ¡£ÏÂµ¥¶¼»áÓĞ´ÎÓ¦´ğ»Øµ÷£¬Èç¹ûÏÂµ¥ÇëÇó½á¹¹ÖĞÃ»ÓĞÌîĞ´ºÏÔ¼»òÕß×Ê½ğÕËºÅ£¬Ôò½ö·µ»Ø´íÎóºÅ¡£
-		* ³·µ¥¡¢¸Äµ¥´íÎóÓÉÓ¦´ğºÍOnRtnOrder£¬³É¹¦½ö·µ»ØOnRtnOrder»Øµ÷¡£
-		* sessionID±êÊ¶ÇëÇó¶ÔÓ¦µÄsessionID£¬ÒÔ±ãÈ·¶¨¸Ã±ÊÓ¦´ğ¶ÔÓ¦µÄÇëÇó¡£
+		* @brief	è®¢å•æ“ä½œåº”ç­”
+		* @details	ä¸‹å•ã€æ’¤å•ã€æ”¹å•åº”ç­”ã€‚ä¸‹å•éƒ½ä¼šæœ‰æ¬¡åº”ç­”å›è°ƒï¼Œå¦‚æœä¸‹å•è¯·æ±‚ç»“æ„ä¸­æ²¡æœ‰å¡«å†™åˆçº¦æˆ–è€…èµ„é‡‘è´¦å·ï¼Œåˆ™ä»…è¿”å›é”™è¯¯å·ã€‚
+		* æ’¤å•ã€æ”¹å•é”™è¯¯ç”±åº”ç­”å’ŒOnRtnOrderï¼ŒæˆåŠŸä»…è¿”å›OnRtnOrderå›è°ƒã€‚
+		* sessionIDæ ‡è¯†è¯·æ±‚å¯¹åº”çš„sessionIDï¼Œä»¥ä¾¿ç¡®å®šè¯¥ç¬”åº”ç­”å¯¹åº”çš„è¯·æ±‚ã€‚
 		*
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] info ¶©µ¥Ó¦´ğ¾ßÌåÀàĞÍ£¬°üº¬¶©µ¥²Ù×÷ÀàĞÍºÍ¶©µ¥ĞÅÏ¢Ö¸Õë¡£
-		* ¶©µ¥ĞÅÏ¢Ö¸Õë²¿·ÖÇé¿öÏÂ¿ÉÄÜÎª¿Õ£¬Èç¹ûÎª¿Õ£¬¿ÉÒÔÍ¨¹ıSessiuonIDÕÒµ½¶ÔÓ¦ÇëÇó»ñÈ¡ÇëÇóÀàĞÍ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] info è®¢å•åº”ç­”å…·ä½“ç±»å‹ï¼ŒåŒ…å«è®¢å•æ“ä½œç±»å‹å’Œè®¢å•ä¿¡æ¯æŒ‡é’ˆã€‚
+		* è®¢å•ä¿¡æ¯æŒ‡é’ˆéƒ¨åˆ†æƒ…å†µä¸‹å¯èƒ½ä¸ºç©ºï¼Œå¦‚æœä¸ºç©ºï¼Œå¯ä»¥é€šè¿‡SessiuonIDæ‰¾åˆ°å¯¹åº”è¯·æ±‚è·å–è¯·æ±‚ç±»å‹ã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_TradeActions
 		*/
 		virtual void TAP_CDECL OnRspOrderAction(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, const ITapTrade::TapAPIOrderActionRsp *info);
 		/**
-		* @brief ·µ»ØĞÂÎ¯ÍĞ¡£ĞÂÏÂµÄ»òÕßÆäËûµØ·½ÏÂµÄÍÆËÍ¹ıÀ´µÄ¡£
-		* @details	·şÎñÆ÷½ÓÊÕµ½¿Í»§ÏÂµÄÎ¯ÍĞÄÚÈİºó¾Í»á±£´æÆğÀ´µÈ´ı´¥·¢£¬Í¬Ê±ÏòÓÃ»§»ØÀ¡Ò»¸ö
-		*			ĞÂÎ¯ÍĞĞÅÏ¢ËµÃ÷·şÎñÆ÷ÕıÈ·´¦ÀíÁËÓÃ»§µÄÇëÇó£¬·µ»ØµÄĞÅÏ¢ÖĞ°üº¬ÁËÈ«²¿µÄÎ¯ÍĞĞÅÏ¢£¬
-		*			Í¬Ê±ÓĞÒ»¸öÓÃÀ´±êÊ¾´ËÎ¯ÍĞµÄÎ¯ÍĞºÅ¡£
-		* @param[in] info Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @note Èç¹û²»¹Ø×¢´ËÏîÄÚÈİ£¬¿ÉÒÔÉè¶¨LoginÊ±µÄNoticeIgnoreFlagÒÔÆÁ±Î¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief è¿”å›æ–°å§”æ‰˜ã€‚æ–°ä¸‹çš„æˆ–è€…å…¶ä»–åœ°æ–¹ä¸‹çš„æ¨é€è¿‡æ¥çš„ã€‚
+		* @details	æœåŠ¡å™¨æ¥æ”¶åˆ°å®¢æˆ·ä¸‹çš„å§”æ‰˜å†…å®¹åå°±ä¼šä¿å­˜èµ·æ¥ç­‰å¾…è§¦å‘ï¼ŒåŒæ—¶å‘ç”¨æˆ·å›é¦ˆä¸€ä¸ª
+		*			æ–°å§”æ‰˜ä¿¡æ¯è¯´æ˜æœåŠ¡å™¨æ­£ç¡®å¤„ç†äº†ç”¨æˆ·çš„è¯·æ±‚ï¼Œè¿”å›çš„ä¿¡æ¯ä¸­åŒ…å«äº†å…¨éƒ¨çš„å§”æ‰˜ä¿¡æ¯ï¼Œ
+		*			åŒæ—¶æœ‰ä¸€ä¸ªç”¨æ¥æ ‡ç¤ºæ­¤å§”æ‰˜çš„å§”æ‰˜å·ã€‚
+		* @param[in] info æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @note å¦‚æœä¸å…³æ³¨æ­¤é¡¹å†…å®¹ï¼Œå¯ä»¥è®¾å®šLoginæ—¶çš„NoticeIgnoreFlagä»¥å±è”½ã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_TradeActions
 		*/
 		virtual void TAP_CDECL OnRtnOrder(const ITapTrade::TapAPIOrderInfoNotice *info);
 		/**
-		* @brief	·µ»Ø²éÑ¯µÄÎ¯ÍĞĞÅÏ¢
-		* @details	·µ»ØÓÃ»§²éÑ¯µÄÎ¯ÍĞµÄ¾ßÌåĞÅÏ¢¡£
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] isLast ±êÊ¾ÊÇ·ñÊÇ×îºóÒ»ÅúÊı¾İ£»
-		* @param[in] info Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief	è¿”å›æŸ¥è¯¢çš„å§”æ‰˜ä¿¡æ¯
+		* @details	è¿”å›ç”¨æˆ·æŸ¥è¯¢çš„å§”æ‰˜çš„å…·ä½“ä¿¡æ¯ã€‚
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] isLast æ ‡ç¤ºæ˜¯å¦æ˜¯æœ€åä¸€æ‰¹æ•°æ®ï¼›
+		* @param[in] info æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_TradeInfo
 		*/
 		virtual void TAP_CDECL OnRspQryOrder(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIOrderInfo *info);
 		/**
-		* @brief ·µ»Ø²éÑ¯µÄÎ¯ÍĞ±ä»¯Á÷³ÌĞÅÏ¢
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë£¬µ±errorCode==0Ê±£¬infoÖ¸Ïò·µ»ØµÄÎ¯ÍĞ±ä»¯Á÷³Ì½á¹¹Ìå£¬²»È»ÎªNULL£»
-		* @param[in] isLast ±êÊ¾ÊÇ·ñÊÇ×îºóÒ»ÅúÊı¾İ£»
-		* @param[in] info ·µ»ØµÄÎ¯ÍĞ±ä»¯Á÷³ÌÖ¸Õë¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief è¿”å›æŸ¥è¯¢çš„å§”æ‰˜å˜åŒ–æµç¨‹ä¿¡æ¯
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ï¼Œå½“errorCode==0æ—¶ï¼ŒinfoæŒ‡å‘è¿”å›çš„å§”æ‰˜å˜åŒ–æµç¨‹ç»“æ„ä½“ï¼Œä¸ç„¶ä¸ºNULLï¼›
+		* @param[in] isLast æ ‡ç¤ºæ˜¯å¦æ˜¯æœ€åä¸€æ‰¹æ•°æ®ï¼›
+		* @param[in] info è¿”å›çš„å§”æ‰˜å˜åŒ–æµç¨‹æŒ‡é’ˆã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_TradeInfo
 		*/
 		virtual void TAP_CDECL OnRspQryOrderProcess(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIOrderInfo *info);
 		/**
-		* @brief ·µ»Ø²éÑ¯µÄ³É½»ĞÅÏ¢
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] isLast 	±êÊ¾ÊÇ·ñÊÇ×îºóÒ»ÅúÊı¾İ£»
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief è¿”å›æŸ¥è¯¢çš„æˆäº¤ä¿¡æ¯
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] isLast 	æ ‡ç¤ºæ˜¯å¦æ˜¯æœ€åä¸€æ‰¹æ•°æ®ï¼›
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_TradeInfo
 		*/
 		virtual void TAP_CDECL OnRspQryFill(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIFillInfo *info);
 		/**
-		* @brief	ÍÆËÍÀ´µÄ³É½»ĞÅÏ¢
-		* @details	ÓÃ»§µÄÎ¯ÍĞ³É½»ºó½«ÏòÓÃ»§ÍÆËÍ³É½»ĞÅÏ¢¡£
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @note Èç¹û²»¹Ø×¢´ËÏîÄÚÈİ£¬¿ÉÒÔÉè¶¨LoginÊ±µÄNoticeIgnoreFlagÒÔÆÁ±Î¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief	æ¨é€æ¥çš„æˆäº¤ä¿¡æ¯
+		* @details	ç”¨æˆ·çš„å§”æ‰˜æˆäº¤åå°†å‘ç”¨æˆ·æ¨é€æˆäº¤ä¿¡æ¯ã€‚
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @note å¦‚æœä¸å…³æ³¨æ­¤é¡¹å†…å®¹ï¼Œå¯ä»¥è®¾å®šLoginæ—¶çš„NoticeIgnoreFlagä»¥å±è”½ã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_TradeActions
 		*/
 		virtual void TAP_CDECL OnRtnFill(const ITapTrade::TapAPIFillInfo *info);
 		/**
-		* @brief ·µ»Ø²éÑ¯µÄ³Ö²Ö
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] isLast 	±êÊ¾ÊÇ·ñÊÇ×îºóÒ»ÅúÊı¾İ£»
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief è¿”å›æŸ¥è¯¢çš„æŒä»“
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] isLast 	æ ‡ç¤ºæ˜¯å¦æ˜¯æœ€åä¸€æ‰¹æ•°æ®ï¼›
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_TradeInfo
 		*/
 		virtual void TAP_CDECL OnRspQryPosition(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIPositionInfo *info);
 		/**
-		* @brief ³Ö²Ö±ä»¯ÍÆËÍÍ¨Öª
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @note Èç¹û²»¹Ø×¢´ËÏîÄÚÈİ£¬¿ÉÒÔÉè¶¨LoginÊ±µÄNoticeIgnoreFlagÒÔÆÁ±Î¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief æŒä»“å˜åŒ–æ¨é€é€šçŸ¥
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @note å¦‚æœä¸å…³æ³¨æ­¤é¡¹å†…å®¹ï¼Œå¯ä»¥è®¾å®šLoginæ—¶çš„NoticeIgnoreFlagä»¥å±è”½ã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_TradeActions
 		*/
 		virtual void TAP_CDECL OnRtnPosition(const ITapTrade::TapAPIPositionInfo *info);
 		/**
-		* @brief ·µ»Ø²éÑ¯µÄ³Ö²Ö»ã×Ü
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] isLast 	±êÊ¾ÊÇ·ñÊÇ×îºóÒ»ÅúÊı¾İ£»
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief è¿”å›æŸ¥è¯¢çš„æŒä»“æ±‡æ€»
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] isLast 	æ ‡ç¤ºæ˜¯å¦æ˜¯æœ€åä¸€æ‰¹æ•°æ®ï¼›
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_TradeInfo
 		*/
 		virtual void TAP_CDECL OnRspQryPositionSummary(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIPositionSummary *info);
 
 		/**
-		* @brief ³Ö²Ö»ã×Ü±ä»¯ÍÆËÍÍ¨Öª
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @note Èç¹û²»¹Ø×¢´ËÏîÄÚÈİ£¬¿ÉÒÔÉè¶¨LoginÊ±µÄNoticeIgnoreFlagÒÔÆÁ±Î¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief æŒä»“æ±‡æ€»å˜åŒ–æ¨é€é€šçŸ¥
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @note å¦‚æœä¸å…³æ³¨æ­¤é¡¹å†…å®¹ï¼Œå¯ä»¥è®¾å®šLoginæ—¶çš„NoticeIgnoreFlagä»¥å±è”½ã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_TradeActions
 		*/
 		virtual void TAP_CDECL OnRtnPositionSummary(const TapAPIPositionSummary *info);
 		/**
-		* @brief ³Ö²ÖÓ¯¿÷Í¨Öª
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @note Èç¹û²»¹Ø×¢´ËÏîÄÚÈİ£¬¿ÉÒÔÉè¶¨LoginÊ±µÄNoticeIgnoreFlagÒÔÆÁ±Î¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief æŒä»“ç›ˆäºé€šçŸ¥
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @note å¦‚æœä¸å…³æ³¨æ­¤é¡¹å†…å®¹ï¼Œå¯ä»¥è®¾å®šLoginæ—¶çš„NoticeIgnoreFlagä»¥å±è”½ã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_TradeActions
 		*/
 		virtual void TAP_CDECL OnRtnPositionProfit(const ITapTrade::TapAPIPositionProfitNotice *info);
 
 
 		/**
-		* @brief ·µ»ØÏµÍ³ÖĞµÄ±ÒÖÖĞÅÏ¢
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] isLast 	±êÊ¾ÊÇ·ñÊÇ×îºóÒ»ÅúÊı¾İ£»
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief è¿”å›ç³»ç»Ÿä¸­çš„å¸ç§ä¿¡æ¯
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] isLast 	æ ‡ç¤ºæ˜¯å¦æ˜¯æœ€åä¸€æ‰¹æ•°æ®ï¼›
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_TradeSystem
 		*/
 		virtual void TAP_CDECL OnRspQryCurrency(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPICurrencyInfo *info);
 
 		/**
-		* @brief	½»Ò×ÏûÏ¢Í¨Öª
-		* @details	·µ»Ø²éÑ¯µÄÓÃ»§×Ê½ğ×´Ì¬ĞÅÏ¢¡£ĞÅÏ¢ËµÃ÷ÁËÓÃ»§µÄ×Ê½ğ×´Ì¬£¬ÓÃ»§ĞèÒª×ĞÏ¸²é¿´ÕâĞ©ĞÅÏ¢¡£
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] isLast 	±êÊ¾ÊÇ·ñÊÇ×îºóÒ»ÅúÊı¾İ£»
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief	äº¤æ˜“æ¶ˆæ¯é€šçŸ¥
+		* @details	è¿”å›æŸ¥è¯¢çš„ç”¨æˆ·èµ„é‡‘çŠ¶æ€ä¿¡æ¯ã€‚ä¿¡æ¯è¯´æ˜äº†ç”¨æˆ·çš„èµ„é‡‘çŠ¶æ€ï¼Œç”¨æˆ·éœ€è¦ä»”ç»†æŸ¥çœ‹è¿™äº›ä¿¡æ¯ã€‚
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] isLast 	æ ‡ç¤ºæ˜¯å¦æ˜¯æœ€åä¸€æ‰¹æ•°æ®ï¼›
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_AccountDetails
 		*/
 		virtual void TAP_CDECL OnRspQryTradeMessage(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPITradeMessage *info);
 		/**
-		* @brief	½»Ò×ÏûÏ¢Í¨Öª
-		* @details	ÓÃ»§ÔÚ½»Ò×¹ı³ÌÖĞ¿ÉÄÜÒòÎª×Ê½ğ¡¢³Ö²Ö¡¢Æ½²ÖµÄ×´Ì¬±ä¶¯Ê¹ÕË»§´¦ÓÚÄ³Ğ©Î£ÏÕ×´Ì¬£¬»òÕßÄ³Ğ©ÖØÒªµÄĞÅÏ¢ĞèÒªÏòÓÃ»§Í¨Öª¡£
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief	äº¤æ˜“æ¶ˆæ¯é€šçŸ¥
+		* @details	ç”¨æˆ·åœ¨äº¤æ˜“è¿‡ç¨‹ä¸­å¯èƒ½å› ä¸ºèµ„é‡‘ã€æŒä»“ã€å¹³ä»“çš„çŠ¶æ€å˜åŠ¨ä½¿è´¦æˆ·å¤„äºæŸäº›å±é™©çŠ¶æ€ï¼Œæˆ–è€…æŸäº›é‡è¦çš„ä¿¡æ¯éœ€è¦å‘ç”¨æˆ·é€šçŸ¥ã€‚
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_AccountDetails
 		*/
 		virtual void TAP_CDECL OnRtnTradeMessage(const ITapTrade::TapAPITradeMessage *info);
 		/**
-		* @brief ÀúÊ·Î¯ÍĞ²éÑ¯Ó¦´ğ
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] isLast 	±êÊ¾ÊÇ·ñÊÇ×îºóÒ»ÅúÊı¾İ
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief å†å²å§”æ‰˜æŸ¥è¯¢åº”ç­”
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] isLast 	æ ‡ç¤ºæ˜¯å¦æ˜¯æœ€åä¸€æ‰¹æ•°æ®
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_HisInfo
 		*/
 		virtual void TAP_CDECL OnRspQryHisOrder(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIHisOrderQryRsp *info);
 		/**
-		* @brief ÀúÊ·Î¯ÍĞÁ÷³Ì²éÑ¯Ó¦´ğ
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] isLast 	±êÊ¾ÊÇ·ñÊÇ×îºóÒ»ÅúÊı¾İ
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief å†å²å§”æ‰˜æµç¨‹æŸ¥è¯¢åº”ç­”
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] isLast 	æ ‡ç¤ºæ˜¯å¦æ˜¯æœ€åä¸€æ‰¹æ•°æ®
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_HisInfo
 		*/
 		virtual void TAP_CDECL OnRspQryHisOrderProcess(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIHisOrderProcessQryRsp *info);
 		/**
-		* @brief ÀúÊ·³É½»²éÑ¯Ó¦´ğ
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] isLast 	±êÊ¾ÊÇ·ñÊÇ×îºóÒ»ÅúÊı¾İ
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief å†å²æˆäº¤æŸ¥è¯¢åº”ç­”
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] isLast 	æ ‡ç¤ºæ˜¯å¦æ˜¯æœ€åä¸€æ‰¹æ•°æ®
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_HisInfo
 		*/
 		virtual void TAP_CDECL OnRspQryHisMatch(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIHisMatchQryRsp *info);
 		/**
-		* @brief ÀúÊ·³Ö²Ö²éÑ¯Ó¦´ğ
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] isLast 	±êÊ¾ÊÇ·ñÊÇ×îºóÒ»ÅúÊı¾İ
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief å†å²æŒä»“æŸ¥è¯¢åº”ç­”
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] isLast 	æ ‡ç¤ºæ˜¯å¦æ˜¯æœ€åä¸€æ‰¹æ•°æ®
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_HisInfo
 		*/
 		virtual void TAP_CDECL OnRspQryHisPosition(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIHisPositionQryRsp *info);
 		/**
-		* @brief ÀúÊ·½»¸î²éÑ¯Ó¦´ğ
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] isLast 	±êÊ¾ÊÇ·ñÊÇ×îºóÒ»ÅúÊı¾İ
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief å†å²äº¤å‰²æŸ¥è¯¢åº”ç­”
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] isLast 	æ ‡ç¤ºæ˜¯å¦æ˜¯æœ€åä¸€æ‰¹æ•°æ®
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_HisInfo
 		*/
 		virtual void TAP_CDECL OnRspQryHisDelivery(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIHisDeliveryQryRsp *info);
 		/**
-		* @brief ×Ê½ğµ÷Õû²éÑ¯Ó¦´ğ
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] isLast 	±êÊ¾ÊÇ·ñÊÇ×îºóÒ»ÅúÊı¾İ
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief èµ„é‡‘è°ƒæ•´æŸ¥è¯¢åº”ç­”
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] isLast 	æ ‡ç¤ºæ˜¯å¦æ˜¯æœ€åä¸€æ‰¹æ•°æ®
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_HisInfo
 		*/
 		virtual void TAP_CDECL OnRspQryAccountCashAdjust(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIAccountCashAdjustQryRsp *info);
 		/**
-		* @brief ²éÑ¯ÓÃ»§ÕËµ¥Ó¦´ğ Add:2013.12.11
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief æŸ¥è¯¢ç”¨æˆ·è´¦å•åº”ç­” Add:2013.12.11
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_Bill
 		*/
 		virtual void TAP_CDECL OnRspQryBill(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIBillQryRsp *info);
 		/**
-		* @brief ²éÑ¯ÕË»§ÊÖĞø·Ñ¼ÆËã²ÎÊı Add:2017.01.14
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief æŸ¥è¯¢è´¦æˆ·æ‰‹ç»­è´¹è®¡ç®—å‚æ•° Add:2017.01.14
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_Rent
 		*/
 		virtual void TAP_CDECL OnRspQryAccountFeeRent(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIAccountFeeRentQryRsp *info);
 		/**
-		* @brief ²éÑ¯ÕË»§±£Ö¤½ğ¼ÆËã²ÎÊı Add:2017.01.14
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief æŸ¥è¯¢è´¦æˆ·ä¿è¯é‡‘è®¡ç®—å‚æ•° Add:2017.01.14
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_Rent
 		*/
 		virtual void TAP_CDECL OnRspQryAccountMarginRent(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIAccountMarginRentQryRsp *info);
 
 		/**
-		* @brief ¸Û½»Ëù×öÊĞÉÌË«±ß±¨¼ÛÓ¦´ğ Add:2017.08.29
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief æ¸¯äº¤æ‰€åšå¸‚å•†åŒè¾¹æŠ¥ä»·åº”ç­” Add:2017.08.29
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_HKMarket
 		*/
 		virtual void TAP_CDECL OnRspHKMarketOrderInsert(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, const ITapTrade::TapAPIOrderMarketInsertRsp *info);
 
 		/**
-		* @brief ¸Û½»Ëù×öÊĞÉÌË«±ß³·µ¥Ó¦´ğ Add:2017.08.29
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief æ¸¯äº¤æ‰€åšå¸‚å•†åŒè¾¹æ’¤å•åº”ç­” Add:2017.08.29
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_HKMarket
 		*/
 		virtual void TAP_CDECL OnRspHKMarketOrderDelete(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, const ITapTrade::TapAPIOrderMarketDeleteRsp *info);
 
 		/**
-		* @brief ¸Û½»ËùÑ¯¼ÛÍ¨Öª Add:2017.08.29
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief æ¸¯äº¤æ‰€è¯¢ä»·é€šçŸ¥ Add:2017.08.29
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_HKMarket
 		*/
 		virtual void TAP_CDECL OnHKMarketQuoteNotice(const ITapTrade::TapAPIOrderQuoteMarketNotice *info);
 
 
 		/**
-		* @brief ¶©µ¥É¾³ıÓ¦´ğ Add:2017.12.05
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief è®¢å•åˆ é™¤åº”ç­” Add:2017.12.05
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_LocalAction
 		*/
 		virtual void TAP_CDECL OnRspOrderLocalRemove(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, const ITapTrade::TapAPIOrderLocalRemoveRsp *info);
 
 		/**
-		* @brief ¶©µ¥Â¼ÈëÓ¦´ğ Add:2017.12.05
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief è®¢å•å½•å…¥åº”ç­” Add:2017.12.05
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_LocalAction
 		*/
 		virtual void TAP_CDECL OnRspOrderLocalInput(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, const ITapTrade::TapAPIOrderLocalInputRsp *info);
 
 		/**
-		* @brief ¶©µ¥ĞŞ¸ÄÓ¦´ğ Add:2017.12.05
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief è®¢å•ä¿®æ”¹åº”ç­” Add:2017.12.05
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_LocalAction
 		*/
 		virtual void TAP_CDECL OnRspOrderLocalModify(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, const ITapTrade::TapAPIOrderLocalModifyRsp *info);
 
 		/**
-		* @brief ¶©µ¥×ªÒÆÓ¦´ğ Add:2017.12.05
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief è®¢å•è½¬ç§»åº”ç­” Add:2017.12.05
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_LocalAction
 		*/
 		virtual void TAP_CDECL OnRspOrderLocalTransfer(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, const ITapTrade::TapAPIOrderLocalTransferRsp *info);
 
 		/**
-		* @brief ³É½»Â¼ÈëÓ¦´ğ Add:2017.12.05
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief æˆäº¤å½•å…¥åº”ç­” Add:2017.12.05
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_LocalAction
 		*/
 		virtual void TAP_CDECL OnRspFillLocalInput(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, const ITapTrade::TapAPIFillLocalInputRsp *info);
 
 		/**
-		* @brief ¶©µ¥É¾³ıÓ¦´ğ Add:2017.12.05
-		* @param[in] sessionID ÇëÇóµÄ»á»°ID£»
-		* @param[in] errorCode ´íÎóÂë¡£0 ±íÊ¾³É¹¦¡£
-		* @param[in] info		Ö¸Ïò·µ»ØµÄĞÅÏ¢½á¹¹Ìå¡£µ±errorCode²»Îª0Ê±£¬infoÎª¿Õ¡£
-		* @attention ²»ÒªĞŞ¸ÄºÍÉ¾³ıinfoËùÖ¸Ê¾µÄÊı¾İ£»º¯Êıµ÷ÓÃ½áÊø£¬²ÎÊı²»ÔÙÓĞĞ§¡£
+		* @brief è®¢å•åˆ é™¤åº”ç­” Add:2017.12.05
+		* @param[in] sessionID è¯·æ±‚çš„ä¼šè¯IDï¼›
+		* @param[in] errorCode é”™è¯¯ç ã€‚0 è¡¨ç¤ºæˆåŠŸã€‚
+		* @param[in] info		æŒ‡å‘è¿”å›çš„ä¿¡æ¯ç»“æ„ä½“ã€‚å½“errorCodeä¸ä¸º0æ—¶ï¼Œinfoä¸ºç©ºã€‚
+		* @attention ä¸è¦ä¿®æ”¹å’Œåˆ é™¤infoæ‰€æŒ‡ç¤ºçš„æ•°æ®ï¼›å‡½æ•°è°ƒç”¨ç»“æŸï¼Œå‚æ•°ä¸å†æœ‰æ•ˆã€‚
 		* @ingroup G_T_LocalAction
 		*/
 		virtual void TAP_CDECL OnRspFillLocalRemove(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, const ITapTrade::TapAPIFillLocalRemoveRsp *info);
@@ -504,17 +504,17 @@ namespace QCTech
 #pragma endregion
 
 	private:
-		// ½»Ò×½Ó¿ÚÀà
+		// äº¤æ˜“æ¥å£ç±»
 		ITapTradeAPI* m_pTradeApi;
 
-		// ·şÎñÆ÷µØÖ·
+		// æœåŠ¡å™¨åœ°å€
 		std::string m_host;
-		// ·şÎñÆ÷¶Ë¿ÚºÅ
+		// æœåŠ¡å™¨ç«¯å£å·
 		uint16_t	m_port;
 
-		// ½»Ò×½Ó¿Ú³õÊ¼»¯ĞÅÏ¢
+		// äº¤æ˜“æ¥å£åˆå§‹åŒ–ä¿¡æ¯
 		TapAPIApplicationInfo m_stAppInfo;
-		// ¼øÈ¨ĞÅÏ¢
+		// é‰´æƒä¿¡æ¯
 		TapAPITradeLoginAuth m_stLoginAuth;
 
 	};
