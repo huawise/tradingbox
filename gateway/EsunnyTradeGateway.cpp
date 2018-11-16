@@ -1,8 +1,10 @@
 ﻿#include <cstring>
 #include <iTapTradeAPI.h>
 #include <iTapAPIError.h>
+#include <iTapTradeAPIDataType.h>
 #include "TradeGateway.h"
 #include "EsunnyTradeGateway.h"
+#include "DataType.h"
 
 namespace QCTech
 {
@@ -74,15 +76,90 @@ namespace QCTech
 
 	void EsunnyTradeGateway::Disconnect()
 	{
-		m_pTradeApi->Disconnect();
+		if (m_pTradeApi != nullptr) {
+			m_pTradeApi->Disconnect();
+		}
 	}
 
-	void EsunnyTradeGateway::InsertOrder(StructInsertOrderReq & stOrderReq)
+	void EsunnyTradeGateway::QryAccount()
+	{
+		if (m_pTradeApi == nullptr)
+			return;
+		ITapTrade::TAPIUINT32 sessionID;
+		ITapTrade::TapAPIAccQryReq qryReq;
+		m_pTradeApi->QryAccount(&sessionID, &qryReq);
+
+		std::cout << "sessionID: " << sessionID << std::endl;
+	}
+
+	void EsunnyTradeGateway::QryFund()
+	{
+		if (m_pTradeApi == nullptr)
+			return;
+		
+		ITapTrade::TAPIUINT32 sessionID;
+		ITapTrade::TapAPIFundReq qryReq;
+		m_pTradeApi->QryFund(&sessionID, &qryReq);
+
+		std::cout << "sessionID: " << sessionID << std::endl;
+	}
+
+
+
+	void EsunnyTradeGateway::InsertOrder(StructInsertOrderReq& stOrderReq)
 	{
 		std::cout << __FUNCTION__ << std::endl;
+		if (m_pTradeApi == nullptr)
+			return;
+		ITapTrade::TAPIUINT32 sessionID = 0;
+		ITapTrade::TAPISTR_50 ClientOrderNo;
+
 		TapAPINewOrder order;
+	std::cout << "stOrderReq.ExchangeID = " << stOrderReq.ExchangeID
+		<< "stOrderReq.ExchangeID.c_str() = " << stOrderReq.ExchangeID.c_str() 
+		<< "   order.ExchangeNo = " << order.ExchangeNo << std::endl;
+		strncpy(order.AccountNo, 	m_stLoginAuth.UserNo, 			sizeof(order.AccountNo));			
+		strncpy(order.ExchangeNo, 	stOrderReq.ExchangeID.c_str(), 	sizeof(order.ExchangeNo));
+		strncpy(order.CommodityNo, 	stOrderReq.CommodityID.c_str(), sizeof(order.CommodityNo));		
+		strncpy(order.ContractNo, 	stOrderReq.ContractID.c_str(), 	sizeof(order.ContractNo));	
+			
+		order.CommodityType = TAPI_COMMODITY_TYPE_FUTURES;	// 默认期货
+		order.OrderType 	= TAPI_ORDER_TYPE_LIMIT; 		// 易胜不支持市价交易，所以只能用限价			
+		order.OrderSide 	= stOrderReq.Direction == DirectionType::BUY? TAPI_SIDE_BUY: TAPI_SIDE_SELL;						
+		order.OrderPrice 	= stOrderReq.OrderPrice;		
+		order.OrderQty 		= stOrderReq.OrderQty;	
+		order.OrderSource = 'A';
+
 		
-		//m_pTradeApi->InsertOrder();
+
+
+	//下单
+#define DEFAULT_ACCOUNT_NO		(DEFAULT_USERNAME)
+#define DEFAULT_EXCHANGE_NO		("HKEX")
+#define DEFAULT_COMMODITY_TYPE	(TAPI_COMMODITY_TYPE_FUTURES)
+#define DEFAULT_COMMODITY_NO	("MHI")
+#define DEFAULT_CONTRACT_NO		("1811")
+#define DEFAULT_ORDER_TYPE		(TAPI_ORDER_TYPE_LIMIT)
+#define DEFAULT_ORDER_SIDE		(TAPI_SIDE_BUY)
+#define DEFAULT_ORDER_PRICE		(26100)
+#define DEFAULT_ORDER_QTY		(1)		
+TapAPINewOrder stNewOrder;
+	strcpy(stNewOrder.AccountNo, m_stLoginAuth.UserNo);			
+	strcpy(stNewOrder.ExchangeNo, DEFAULT_EXCHANGE_NO);		
+	stNewOrder.CommodityType = DEFAULT_COMMODITY_TYPE;		
+	strcpy(stNewOrder.CommodityNo, DEFAULT_COMMODITY_NO);		
+	strcpy(stNewOrder.ContractNo, DEFAULT_CONTRACT_NO);				
+	stNewOrder.OrderType = DEFAULT_ORDER_TYPE;			
+	stNewOrder.OrderSource = 'A';		
+	stNewOrder.TimeInForce = TAPI_ORDER_TIMEINFORCE_GFD;		
+	stNewOrder.OrderSide = DEFAULT_ORDER_SIDE;						
+	stNewOrder.OrderPrice = DEFAULT_ORDER_PRICE;		
+	stNewOrder.OrderQty = DEFAULT_ORDER_QTY;	
+
+
+		m_pTradeApi->InsertOrder(&sessionID, &ClientOrderNo, &order);
+
+		std::cout << "sessionID: " << sessionID << std::endl;
 	}
 
 
@@ -237,6 +314,18 @@ namespace QCTech
 	void TAP_CDECL EsunnyTradeGateway::OnRspQryAccount(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIUINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIAccountInfo *info)
 	{
 		std::cout << __FUNCTION__ << std::endl;
+		std::cout << "sessionID : " << sessionID 	<< std::endl;
+		std::cout << "errorCode : " << errorCode 	<< std::endl;
+		std::cout << "isLast    : " << isLast 		<< std::endl;
+
+		std::cout << "AccountInfo->" << std::endl;
+		std::cout << "	AccountEnShortName  :" << info->AccountEnShortName << std::endl; 
+		std::cout << "	AccountNo           :" << info->AccountNo << std::endl; 
+		std::cout << "	AccountShortName    :" << info->AccountShortName << std::endl; 
+		std::cout << "	AccountState        :" << info->AccountState << std::endl; 
+		std::cout << "	AccountTradeRight   :" << info->AccountTradeRight << std::endl; 
+		std::cout << "	AccountType         :" << info->AccountType << std::endl; 
+		std::cout << "	CommodityGroupNo    :" << info->CommodityGroupNo << std::endl; 
 	}
 
 	/**
@@ -251,6 +340,20 @@ namespace QCTech
 	void TAP_CDECL EsunnyTradeGateway::OnRspQryFund(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIFundData *info)
 	{
 		std::cout << __FUNCTION__ << std::endl;
+		std::cout << "sessionID : " << sessionID 	<< std::endl;
+		std::cout << "errorCode : " << errorCode 	<< std::endl;
+		std::cout << "isLast    : " << isLast 		<< std::endl;
+
+		if (errorCode != TAPIERROR_SUCCEED || info == nullptr)
+		{
+			return;
+		}
+
+		std::cout << "AccountNo   ：" << info->AccountNo << std::endl;
+		std::cout << "Available   ：" << info->Available << std::endl;
+		std::cout << "Balance     ：" << info->Balance << std::endl;
+		std::cout << "CloseProfit ：" << info->CloseProfit << std::endl;
+		
 	}
 
 	/**
@@ -337,6 +440,13 @@ namespace QCTech
 	void TAP_CDECL EsunnyTradeGateway::OnRspOrderAction(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, const ITapTrade::TapAPIOrderActionRsp *info)
 	{
 		std::cout << __FUNCTION__ << std::endl;
+		if (errorCode != TAPIERROR_SUCCEED) {
+			std::cout << "errorCode: " << errorCode << std::endl;
+			return;
+		}
+
+		std::cout << "ActionType	: " << info->ActionType << std::endl;
+		std::cout << "OrderInfo->RefInt	: " << info->OrderInfo->RefInt << std::endl;
 	}
 
 	/**

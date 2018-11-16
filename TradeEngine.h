@@ -28,6 +28,8 @@ namespace QCTech
 		void Disconnect();
 		void Disconnect(std::string gatewayName);
 
+		void QryAccount();
+
 		void InsertOrder(StructInsertOrderReq& stOrder, std::string gatewayName);
 	private:
 		std::unordered_map<std::string, TradeGateway&> m_mapTradeGateway;

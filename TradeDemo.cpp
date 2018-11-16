@@ -16,29 +16,40 @@ class TradingTest
 public:
 	TradingTest()
 	{
-		menuAppend("断开连接", std::bind(&TradingTest::TestDisconnect, this));
-		menuAppend("委托下单", std::bind(&TradingTest::TestInsertOrder, this));
+
 	}
+
+	void TestCaseRegister(const std::string& title, std::function<void(TradingTest&)> func)
+	{
+		stMenuItem st;
+		st.title = " " + std::to_string(m_vctMenuItemFunc.size()) + "." + title;
+		st.func = func;
+		m_vctMenuItemFunc.emplace_back(st);
+	}
+
 	void TestInit()
 	{
+		TestCaseRegister("[SUBTEST]易胜交易接口测试", std::bind(&TradingTest::SubTestEsunnyTradeGateway, this));
+		TestCaseRegister("连接接口", std::bind(&TradingTest::TestDisconnect, this));
+		TestCaseRegister("断开连接", std::bind(&TradingTest::TestDisconnect, this));
+		TestCaseRegister("查询账号", std::bind(&TradingTest::QryAccount, this));
+		TestCaseRegister("委托下单", std::bind(&TradingTest::TestInsertOrder, this));
 		// 挂载交易网关
 		//TNgine.AddGateway(ctpTradeGateway);
 		TNgine.AddGateway(esunnyTradeGateway);
-		// 连接全部交易接口
-		TNgine.Connect();
 	}
 
-	void MenuDisplay()
+	void TestCaseDisplay()
 	{
-		std::cout << std::flush << "-------------------------------------" << std::endl;
+		std::cout << std::flush << "-------------[ 交易网关测试 ]-------------" << std::endl;
 		for (auto it= m_vctMenuItemFunc.begin(); it!= m_vctMenuItemFunc.end(); ++it)
 		{
 			std::cout << it->title.c_str() << std::endl;
 		}
-		std::cout << std::flush << "-------------------------------------" << std::endl;
+		std::cout << std::flush << "-----------------------------------------" << std::endl;
 	}
 
-	void RunTest(int index)
+	void RunTestCase(int index)
 	{
 		try
 		{
@@ -50,7 +61,8 @@ public:
 			std::cout << "没有这个选项!" << std::endl;
 		}
 	}
-
+	void SubTestEsunnyTradeGateway();
+	void QryAccount();
 	void TestDisconnect();
 	void TestInsertOrder();
 	
@@ -71,21 +83,16 @@ private:
 	};
 
 	std::vector<stMenuItem> m_vctMenuItemFunc;
-
-	inline void menuAppend(const std::string& title, std::function<void(TradingTest&)> func)
-	{
-		stMenuItem st;
-		st.title = " " + std::to_string(m_vctMenuItemFunc.size()) + "." + title;
-		st.func = func;
-
-		m_vctMenuItemFunc.emplace_back(st);
-	}
-
 };
 
 void TradingTest::TestDisconnect()
 {
 	TNgine.Disconnect();
+}
+
+void TradingTest::QryAccount()
+{
+	TNgine.QryAccount();
 }
 
 void TradingTest::TestInsertOrder()
@@ -94,17 +101,85 @@ void TradingTest::TestInsertOrder()
 	TNgine.InsertOrder(stOrderReq, esunnyTradeGateway.GetGatewayName());
 }
 
+void TradingTest::SubTestEsunnyTradeGateway()
+{
+	EsunnyTradeGateway es;
+
+	int nCmd = 0;
+	do {
+		std::cout << "------- [SubTestCase] -------\n" 
+					<< "0.[Return to Main Menu]\n"
+					<< "1.Connect\n"
+				  	<< "2.Disconnect\n"
+					<< "3.QryAccount\n"
+					<< "4.QryFund\n"
+					<< "5.InsertOrder\n"
+				  << "-----------------------------"
+				  << std::endl;
+		std::cin >> nCmd;
+
+		
+
+		switch (nCmd)
+		{
+		case 0:
+			std::cout << "Exit" << std::endl;
+			break;
+		case 1:
+			es.Connect();
+			break;
+		case 2:
+			es.Disconnect();
+			break;
+		case 3:
+			es.QryAccount();
+			break;
+		case 4:
+			es.QryFund();
+			break;
+		case 5:
+		{
+			StructInsertOrderReq req;
+			req.CommodityID 	= "HSI";
+			req.ContractID		= "1811";
+			req.Direction		= DirectionType::BUY;
+			req.ExchangeID		= "HKEX";
+			req.OrderPrice		= 26200;
+			req.OrderQty		= 1;
+			es.InsertOrder(req);
+		}
+		break;
+		default:
+			std::cout << "选项不存在" << std::endl;
+			break;
+		}
+		
+	} while (nCmd !=0); 
+
+	es.Disconnect();
+
+}
+
+
+
+
+
+
+
+
+
+
 int main(int argc, char* argv[])
 {
-	TradingTest t;
-	t.MenuDisplay();
-	t.TestInit();
+	TradingTest test;
+	test.TestInit();
 	int nCmd = 0;
 	while (true)
 	{
+		test.TestCaseDisplay();
 		std::cin >> nCmd;
-		t.RunTest(nCmd);
-		t.MenuDisplay();
+		test.RunTestCase(nCmd);
+		
 	}
 
 	system("pause");
@@ -112,24 +187,3 @@ int main(int argc, char* argv[])
 	return 0;
 }
 
-
-
-/*
-<Step 1> 准备阶段
-1.设置连接配置信息
-1.1.程序里面默认配置信息
-1.2.主窗口输入配置。配置项：账号，密码
-2.初始化API相关参数
-3.连接服务器
-3.1.连接失败处理
-4.登录服务器
-4.1.登录失败处理
-5.拉取合约信息
-
-<Step 2> 交互阶段
-1.委托下单
-2.委托撤单
-3.获取资金信息
-4.获取持仓信息
-5.获取商品信息
-*/

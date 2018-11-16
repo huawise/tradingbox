@@ -18,6 +18,8 @@ namespace QCTech
 		virtual void LoadConfigure();
 		virtual void Connect();
 		virtual void Disconnect();
+		virtual void QryAccount();
+		virtual void QryFund();
 		virtual void InsertOrder(StructInsertOrderReq& stOrderReq);
 
 	public:
@@ -506,7 +508,7 @@ namespace QCTech
 
 	private:
 		// 交易接口类
-		ITapTradeAPI* m_pTradeApi;
+		ITapTradeAPI* m_pTradeApi = nullptr;
 
 		// 服务器地址
 		std::string m_host;

@@ -26,6 +26,7 @@ namespace QCTech
 		}
 		return nullptr;
 	}
+
 	void TradeEngine::Connect(std::string gatewayName)
 	{
 		auto gw = GetGateway(gatewayName);
@@ -34,6 +35,7 @@ namespace QCTech
 			gw->Connect();
 		}
 	}
+
 	void TradeEngine::Disconnect()
 	{
 		for (auto& it : m_mapTradeGateway)
@@ -41,9 +43,24 @@ namespace QCTech
 			it.second.Disconnect();
 		}
 	}
+
 	void TradeEngine::Disconnect(std::string gatewayName)
 	{
+		auto gw = GetGateway(gatewayName);
+		if (gw != nullptr)
+		{
+			gw->Disconnect();
+		}
 	}
+
+	void TradeEngine::QryAccount()
+	{
+		for (auto& it: m_mapTradeGateway)
+		{
+			it.second.QryAccount();
+		}
+	}
+
 	void TradeEngine::InsertOrder(StructInsertOrderReq& stOrderReq, std::string gatewayName)
 	{
 		auto gw = GetGateway(gatewayName);
@@ -52,6 +69,7 @@ namespace QCTech
 			gw->InsertOrder(stOrderReq);
 		}
 	}
+
 	void TradeEngine::Connect()
 	{
 		for (auto& it: m_mapTradeGateway)

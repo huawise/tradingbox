@@ -1,19 +1,26 @@
 ﻿#pragma once
 
 #include <iostream>
+#include <string>
 #include <cstring>
 
 namespace QCTech {
 
+	enum class DirectionType
+	{
+		NONE	= 0,
+		BUY		= 1,
+		SELL	= 2,
+	};
+
 	struct StructInsertOrderReq
 	{
-		double price;
-		int volume;
-
-		StructInsertOrderReq()
-		{
-			memset(this, 0, sizeof(StructInsertOrderReq));
-		}
+		std::string 	ExchangeID;
+		std::string 	CommodityID ;
+		std::string 	ContractID;
+		DirectionType 	Direction;
+		double 			OrderPrice;
+		int 			OrderQty;
 	};
 
 	struct StructAccountInfo

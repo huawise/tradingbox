@@ -5,7 +5,7 @@ cmake_minimum_required (VERSION 2.8.8)
 project("TradeDemo")
 
 
-set(CMAKE_CXX_FLAGS "-std=c++1y")
+set(CMAKE_CXX_FLAGS "--std=c++11")
 set(CMAKE_BUILD_TYPE  Debug)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/output)
 

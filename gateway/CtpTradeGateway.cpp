@@ -27,7 +27,7 @@ namespace QCTech
 		LoadConfigure();
 	}
 
-	void CtpTradeGateway::InsertOrder(StructInsertOrderReq & stOrderReq)
+	void CtpTradeGateway::InsertOrder(StructInsertOrderReq& stOrderReq)
 	{
 		std::cout << __FUNCTION__ << std::endl;
 	}
