@@ -104,6 +104,19 @@ namespace QCTech
 		std::cout << "sessionID: " << sessionID << std::endl;
 	}
 
+	void EsunnyTradeGateway::QryPosition()
+	{
+		if (m_pTradeApi == nullptr)
+			return;
+		
+ 		ITapTrade::TAPIUINT32 sessionID;
+		ITapTrade::TapAPIPositionQryReq qryReq;
+		memcpy(qryReq.AccountNo, m_stLoginAuth.UserNo, sizeof(qryReq.AccountNo));
+
+		m_pTradeApi->QryPosition(&sessionID, &qryReq);
+		std::cout << "sessionID: " << sessionID << std::endl;
+	}
+
 
 
 	void EsunnyTradeGateway::InsertOrder(StructInsertOrderReq& stOrderReq)
@@ -115,9 +128,9 @@ namespace QCTech
 		ITapTrade::TAPISTR_50 ClientOrderNo;
 
 		TapAPINewOrder order;
-	std::cout << "stOrderReq.ExchangeID = " << stOrderReq.ExchangeID
-		<< "stOrderReq.ExchangeID.c_str() = " << stOrderReq.ExchangeID.c_str() 
-		<< "   order.ExchangeNo = " << order.ExchangeNo << std::endl;
+		std::cout 	<< "stOrderReq.ExchangeID 			= " << stOrderReq.ExchangeID
+					<< "stOrderReq.ExchangeID.c_str() 	= " << stOrderReq.ExchangeID.c_str() 
+					<< "order.ExchangeNo 				= " << order.ExchangeNo << std::endl;
 		strncpy(order.AccountNo, 	m_stLoginAuth.UserNo, 			sizeof(order.AccountNo));			
 		strncpy(order.ExchangeNo, 	stOrderReq.ExchangeID.c_str(), 	sizeof(order.ExchangeNo));
 		strncpy(order.CommodityNo, 	stOrderReq.CommodityID.c_str(), sizeof(order.CommodityNo));		
@@ -130,36 +143,19 @@ namespace QCTech
 		order.OrderQty 		= stOrderReq.OrderQty;	
 		order.OrderSource = 'A';
 
-		
-
-
-	//下单
-#define DEFAULT_ACCOUNT_NO		(DEFAULT_USERNAME)
-#define DEFAULT_EXCHANGE_NO		("HKEX")
-#define DEFAULT_COMMODITY_TYPE	(TAPI_COMMODITY_TYPE_FUTURES)
-#define DEFAULT_COMMODITY_NO	("MHI")
-#define DEFAULT_CONTRACT_NO		("1811")
-#define DEFAULT_ORDER_TYPE		(TAPI_ORDER_TYPE_LIMIT)
-#define DEFAULT_ORDER_SIDE		(TAPI_SIDE_BUY)
-#define DEFAULT_ORDER_PRICE		(26100)
-#define DEFAULT_ORDER_QTY		(1)		
-TapAPINewOrder stNewOrder;
-	strcpy(stNewOrder.AccountNo, m_stLoginAuth.UserNo);			
-	strcpy(stNewOrder.ExchangeNo, DEFAULT_EXCHANGE_NO);		
-	stNewOrder.CommodityType = DEFAULT_COMMODITY_TYPE;		
-	strcpy(stNewOrder.CommodityNo, DEFAULT_COMMODITY_NO);		
-	strcpy(stNewOrder.ContractNo, DEFAULT_CONTRACT_NO);				
-	stNewOrder.OrderType = DEFAULT_ORDER_TYPE;			
-	stNewOrder.OrderSource = 'A';		
-	stNewOrder.TimeInForce = TAPI_ORDER_TIMEINFORCE_GFD;		
-	stNewOrder.OrderSide = DEFAULT_ORDER_SIDE;						
-	stNewOrder.OrderPrice = DEFAULT_ORDER_PRICE;		
-	stNewOrder.OrderQty = DEFAULT_ORDER_QTY;	
-
-
 		m_pTradeApi->InsertOrder(&sessionID, &ClientOrderNo, &order);
 
 		std::cout << "sessionID: " << sessionID << std::endl;
+	}
+
+	void EsunnyTradeGateway::CancelOrder(StructCancelOrderReq& stCancelOrderReq)
+	{
+		ITapTrade::TAPIUINT32 sessionID;
+		ITapTrade::TapAPIOrderCancelReq req;
+		memcpy(req.OrderNo, stCancelOrderReq.OrderId.c_str(), sizeof(req.OrderNo));
+
+		m_pTradeApi->CancelOrder(&sessionID, &req);
+
 	}
 
 
@@ -462,6 +458,23 @@ TapAPINewOrder stNewOrder;
 	void TAP_CDECL EsunnyTradeGateway::OnRtnOrder(const ITapTrade::TapAPIOrderInfoNotice *info)
 	{
 		std::cout << __FUNCTION__ << std::endl;
+
+		std::cout << "info->ErrorCode: " << info->ErrorCode << std::endl;
+		std::cout << "info->SessionID: " << info->SessionID << std::endl;
+
+		if (info->ErrorCode != 0 || info->OrderInfo == nullptr)
+		{
+			return;
+		}
+
+		std::cout << "OrderInfo->AccountNo        : " << info->OrderInfo->AccountNo << std::endl;
+		std::cout << "OrderInfo->OrderNo          : " << info->OrderInfo->OrderNo << std::endl;
+		std::cout << "OrderInfo->OrderPrice       : " << info->OrderInfo->OrderPrice << std::endl;
+		std::cout << "OrderInfo->OrderQty         : " << info->OrderInfo->OrderQty << std::endl;
+		std::cout << "OrderInfo->OrderState       : " << info->OrderInfo->OrderState << std::endl;
+		std::cout << "OrderInfo->OrderMatchPrice  : " << info->OrderInfo->OrderMatchPrice << std::endl;
+		std::cout << "OrderInfo->OrderMatchQty    : " << info->OrderInfo->OrderMatchQty << std::endl;
+
 	}
 
 	/**
@@ -532,6 +545,26 @@ TapAPINewOrder stNewOrder;
 	void TAP_CDECL EsunnyTradeGateway::OnRspQryPosition(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIPositionInfo *info)
 	{
 		std::cout << __FUNCTION__ << std::endl;
+
+		std::cout << "errorCode: " << errorCode << std::endl;
+		std::cout << "SessionID: " << sessionID << std::endl;
+		std::cout << "isLast: 	 " << isLast << std::endl;
+
+		if (errorCode != 0 || info == nullptr)
+		{
+			return;
+		}
+
+		std::cout << "info->AccountNo       : " << info->AccountNo 		<< std::endl;
+		std::cout << "info->ExchangeNo      : " << info->ExchangeNo 	<< std::endl;
+		std::cout << "info->CommodityNo     : " << info->CommodityNo	<< std::endl;
+		std::cout << "info->ContractNo      : " << info->ContractNo 	<< std::endl;
+		std::cout << "info->PositionNo      : " << info->PositionNo 	<< std::endl;
+		std::cout << "info->PositionPrice   : " << info->PositionPrice 	<< std::endl;
+		std::cout << "info->PositionQty     : " << info->PositionQty 	<< std::endl;
+		std::cout << "info->PositionProfit  : " << info->PositionProfit << std::endl;
+
+
 	}
 
 	/**

@@ -113,12 +113,12 @@ void TradingTest::SubTestEsunnyTradeGateway()
 				  	<< "2.Disconnect\n"
 					<< "3.QryAccount\n"
 					<< "4.QryFund\n"
-					<< "5.InsertOrder\n"
+					<< "5.QryPosition\n"
+					<< "6.InsertOrder\n"
+					<< "7.CancelOrder\n"
 				  << "-----------------------------"
 				  << std::endl;
 		std::cin >> nCmd;
-
-		
 
 		switch (nCmd)
 		{
@@ -138,15 +138,36 @@ void TradingTest::SubTestEsunnyTradeGateway()
 			es.QryFund();
 			break;
 		case 5:
+			es.QryPosition();
+			break;
+		case 6:
 		{
 			StructInsertOrderReq req;
-			req.CommodityID 	= "HSI";
-			req.ContractID		= "1811";
-			req.Direction		= DirectionType::BUY;
-			req.ExchangeID		= "HKEX";
-			req.OrderPrice		= 26200;
-			req.OrderQty		= 1;
+			std::cout << "InsertOrder: Direction[buy|sell] ExchangeID CommodityID ContractID OrderPrice OrderQty" << std::endl;
+			std::string dir_;
+			std::cin >> dir_;
+			if (dir_ == "buy" || dir_ == "sell")
+			{
+				req.Direction = dir_ == "buy"? DirectionType::BUY: DirectionType::SELL;
+			}
+			else
+			{
+				break;
+			}
+			std::cin >> req.ExchangeID >> req.CommodityID >> req.ContractID >> req.OrderPrice >> req.OrderQty;
+			
 			es.InsertOrder(req);
+		}
+		break;
+		case 7:
+		{
+			StructCancelOrderReq req;
+			std::cout << "Order Id: ";
+			std::cin >> req.OrderId;
+			if (req.OrderId.length() < 8)
+			{
+				es.CancelOrder(req);
+			}
 		}
 		break;
 		default:

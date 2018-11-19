@@ -23,6 +23,11 @@ namespace QCTech {
 		int 			OrderQty;
 	};
 
+	struct StructCancelOrderReq
+	{
+		std::string 	OrderId;
+	};
+
 	struct StructAccountInfo
 	{
 		std::string AccountID;

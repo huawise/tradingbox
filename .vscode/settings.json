@@ -45,5 +45,7 @@
         "xtree": "cpp",
         "xutility": "cpp"
     },
-    "C_Cpp.configurationWarnings": "Disabled"
+    "C_Cpp.configurationWarnings": "Disabled",
+    "files.encoding": "utf8bom",
+    "c-cpp-compile-run.run-in-external-terminal": true
 }

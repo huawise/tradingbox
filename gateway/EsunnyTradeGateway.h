@@ -20,8 +20,9 @@ namespace QCTech
 		virtual void Disconnect();
 		virtual void QryAccount();
 		virtual void QryFund();
-		virtual void InsertOrder(StructInsertOrderReq& stOrderReq);
-
+		virtual void QryPosition();
+		virtual void InsertOrder(StructInsertOrderReq& stInsertOrderReq);
+		virtual void CancelOrder(StructCancelOrderReq& stCancelOrderReq);
 	public:
 #pragma region Spi interfaces in ITapTradeAPINotify
 		/**
