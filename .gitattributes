@@ -1,5 +1,5 @@
 # Force LF and UTF-8 checkout for all source files
-*		text eol=lf
+*		text=auto
 *.c     text eol=lf
 *.cc    text eol=lf
 *.cpp   text eol=lf
