@@ -4,18 +4,19 @@
 cmake_minimum_required (VERSION 2.8.8)
 project("TradeDemo")
 
-
+set(CMAKE_CXX_COMPILER gcc-8)
 set(CMAKE_CXX_FLAGS "--std=c++11")
 set(CMAKE_BUILD_TYPE  Debug)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/output)
 
-set(EsunnyTradeLibDir  ${PROJECT_SOURCE_DIR}/3rdparty/Esunny9.0)
+set(EsunnyTradeLibDir  ${PROJECT_SOURCE_DIR}/api/esunny/iTapTradeApi)
 
 
 include_directories(
     ${PROJECT_SOURCE_DIR}
+    ${PROJECT_SOURCE_DIR}/api
     ${PROJECT_SOURCE_DIR}/gateway
-    ${EsunnyTradeLibDir}
+    ${EsunnyTradeLibDir}/include
 )
 
 link_directories(
@@ -25,7 +26,7 @@ link_directories(
 IF (WIN32)
     link_libraries(iTapTradeAPI_64)
 ELSEIF(UNIX)
-    link_libraries(libiTapTradeAPI.so)
+    link_libraries(iTapTradeAPI)
 ENDIF(WIN32)
 
 
