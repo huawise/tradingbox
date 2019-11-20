@@ -1,0 +1,17 @@
+name: C/C++ CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: centos-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: make build dir
+      run: mkdir build
+    - name: cmake
+      run: cd build && cmake ..
+    - name: make
+      run: make
